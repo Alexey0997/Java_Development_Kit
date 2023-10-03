@@ -1,4 +1,4 @@
-package ru.geekbrains.seminar_1;
+package ru.geekbrains.seminar_1.game_window;
 
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;

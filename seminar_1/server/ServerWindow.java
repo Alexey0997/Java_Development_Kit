@@ -1,4 +1,4 @@
-package ru.geekbrains.seminar_1;
+package ru.geekbrains.seminar_1.server;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,57 +17,42 @@ import java.awt.event.ActionListener;
 /**
  * ServerWindow - класс, наследующий JFrame, предназначенный для создания окна управления сервером.
  */
+
+import javax.swing.*;
+import java.awt.*;
+
 public class ServerWindow extends JFrame {
-    private static final int POS_X = 1000;                 // Положение окна по горизнтали.
-    private static final int POS_Y = 100;                  // Положение окна по вертикали.
-    private static final int WIDTH = 500;                  // Ширина окна.
-    private static final int HEIGHT = 200;                 // Высота окна.
+    private static final int WINDOW_HEIGHT = 340;
+    private static final int WINDOW_WIDTH = 350;
+    private static final int WINDOW_POS_X = 300;
+    private static final int WINDOW_POS_Y = 100;
 
-    private final JTextArea log = new JTextArea();         // Создадим экземпляр текстового поля для отображения текста.
-    private boolean isServerWorking;                       // Введем переменную, обозначающую состояние сервера.
+    private final JTextField loginField = new JTextField("  ЛОГИН ");
 
-    /**
-     * Точка входа в приложение, создающая экземпляр класса ServerWindow.
-     * @param args
-     */
-    public static void main(String[] args){
-        new ServerWindow();
-    }
+    ServerWindow(){
+        setTitle("ПОДКЛЮЧЕНИЕ К СЕРВЕРУ");
+        setBounds(WINDOW_POS_X, WINDOW_POS_Y, WINDOW_WIDTH, WINDOW_HEIGHT);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
 
+        JPanel grid = new JPanel(new GridLayout(3, 2));
+        grid.add(loginField);
+        JTextField passwordField = new JPasswordField("  ПАРОЛЬ ");
+        grid.add(passwordField);
+        JTextField serverField = new JTextField("  АДРЕС СЕРВЕРА ");
+        grid.add(serverField);
+        JTextField portField = new JTextField("  ПОРТ ");
+        grid.add(portField);
+        JTextField forgotP = new JTextField("  ЗАБЫЛИ ПАРОЛЬ? ");
+        grid.add(forgotP);
+        JButton buttonConnect = new JButton("П О Д К Л Ю Ч И Т Ь С Я");
+        grid.add(buttonConnect);
 
-    /**
-     * ServerWindow - класс, имитирующий запуск и остановку серевера, в зависимости от нажатой кнопки на окне.
-     */
-    private ServerWindow(){
-        isServerWorking = false;                            // Сервер выключен.
-        JButton btnStop = new JButton("Stop");         // Создаем кнопку "Стоп".
-        btnStop.addActionListener(new ActionListener() {    // Добавим слушателя событий к кнопке btnStop.
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                isServerWorking = false;
-                System.out.println("Server stopped " + isServerWorking + "\n");
-            }
+        add(grid);
+        buttonConnect.addActionListener(e -> {
+            String login = loginField.getText().trim();
+            new ClientGUI(login);
         });
 
-        //
-        JButton btnStart = new JButton("Start");       // Создаем кнопку "Старт".
-        btnStart.addActionListener(new ActionListener() {  // Добавим слушателя событий к кнопке btnStart.
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                isServerWorking = true;                    // Сервер включен.
-                System.out.println("Serever started " + isServerWorking + "\n");
-            }
-        });
-
-        setDefaultCloseOperation(EXIT_ON_CLOSE);          // Введем действие по умолчанию для закрытия окна.
-        setBounds(POS_X, POS_Y, WIDTH, HEIGHT);           // Установим границы и размер компонента.
-        setResizable(false);                              // Сделаем окно не изменяемым по размеру.
-        setTitle("Chat server");                          // Определим заголовок для окна.
-        setAlwaysOnTop(true);                             // Сделаем окно поверх других окон.
-        setLayout(new GridLayout(1,2));         // Расп. компоненты в виде таблицы с 1 строкой и 2 столбцами.
-        add(btnStart);                                    // Добавим на окно кнопку "Старт".
-        add(btnStop);                                     // Добавим на окно кнопку "Стоп".
-
-        setVisible(true);                                 // Сделаем окно видимым.
+        setVisible(true);
     }
 }

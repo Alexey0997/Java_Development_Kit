@@ -1,4 +1,4 @@
-package ru.geekbrains.seminar_1;
+package ru.geekbrains.seminar_1.game_window;
 
 public class Main {
 

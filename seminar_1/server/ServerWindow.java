@@ -2,8 +2,6 @@ package ru.geekbrains.seminar_1.server;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 /**
  * Задача: Создать простейшее окно управления сервером (по сути, любым),
@@ -17,9 +15,6 @@ import java.awt.event.ActionListener;
 /**
  * ServerWindow - класс, наследующий JFrame, предназначенный для создания окна управления сервером.
  */
-
-import javax.swing.*;
-import java.awt.*;
 
 public class ServerWindow extends JFrame {
     private static final int WINDOW_HEIGHT = 340;

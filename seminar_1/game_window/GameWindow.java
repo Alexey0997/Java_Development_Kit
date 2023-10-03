@@ -1,4 +1,7 @@
-package ru.geekbrains.seminar_1;
+package ru.geekbrains.seminar_1.game_window;
+
+import ru.geekbrains.seminar_1.game_window.Map;
+import ru.geekbrains.seminar_1.game_window.SettingsWindow;
 
 import javax.swing.*;
 import java.awt.*;

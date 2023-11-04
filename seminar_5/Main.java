@@ -1,9 +1,12 @@
-package ru.geekbrains.test;
+package ru.geekbrains.seminar_5;
 
 
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Main - точка входа в программу.
+ */
 public class Main {
     public static void main(String[] args) {
         Philosopher[] philosophers = new Philosopher[5];
@@ -22,10 +25,12 @@ public class Main {
             Thread thread = new Thread(philosophers[i]);
             thread.start();
         }
-
     }
 
-    private static final Map<Integer, String> philName = new HashMap<Integer, String>() {{
+    /**
+     * Коллекция философов - всего пять человек.
+     */
+    private static final Map<Integer, String> philName = new HashMap<>() {{
         put(0, "Валуев");
         put(1, "Хабиб");
         put(2, "Али");

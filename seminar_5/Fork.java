@@ -1,9 +1,12 @@
-package ru.geekbrains.test;
+package ru.geekbrains.seminar_5;
 
+/**
+ * Fork - класс "Вилки".
+ */
 public class Fork {
-    public int amount;
+    public int number;         // Вилка имеет порядковый номер.
 
-    public Fork(int amount) {
-        this.amount = amount;
+    public Fork(int number) {
+        this.number = number;
     }
 }
